@@ -64,6 +64,8 @@ echo "Files to be processed: " $result
 last_count=$result
 
 x=$result 
+repeat_count=0
+
 while [ $x -gt 0 ]; 
 do 
   gsutil du ${BUCKET_Sensitive} | wc -l > gsutil_du.txt 
@@ -83,7 +85,7 @@ do
   result=$x
   echo "Files to be processed: " $result
   
-  echo "Lastcount/result: " $last_count $result
+  #echo "Lastcount/result: " $last_count $result
   
   #if the number processed has not changed, it is likely stuck, but allow 5 loops before exiting
   if [ "$last_count" -ne "$result" ]
